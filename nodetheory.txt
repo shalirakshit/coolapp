@@ -1,0 +1,92 @@
+Aim: Design and deploy a web application in a PaaS environment.
+Objective: 
+• Create simple nodejs app
+• Push code to GitHub
+• Deploy to Heroku
+Theory:
+STEP 1: Create simple nodejs app
+Create a folder on your local machine and give it a name (of your choice), say 
+MyCoolApp.
+Add a file with the name package.json and paste the below content. This file is 
+basic information of our package. (This can also be created by typing command 
+npm init and accepting all default settings.)
+{
+ "name": "coolnodeapp",
+ "version": "1.0.0",
+ "description": "node app ",
+ "main": "app.js",
+ "scripts": {
+ "start": "node app.js"
+},
+ "repository": {
+ "type": "git",
+ "url": ""
+},
+ "author": "",
+ "license": "ISC",
+ "bugs": {
+ "url": ""
+},
+ "homepage": ""
+}
+ package.json
+Add a file, app.js, and paste the below code. This will be the starting point of 
+our app.
+Const http = require('http');
+const port = process.env.PORT || 3000
+const server = http.createServer((req, res) => {
+ res.statusCode = 200;
+ res.setHeader('Content-Type', 'text/html');
+ res.end('<h1>Hello World</h1>');
+});
+server.listen(port,() => {
+ console.log(`Server running at port `+port);
+});
+ app.js
+This code is basically opening a port on the local server and serving some 
+HTML.
+Save the file and run the below command in the command prompt window 
+(which is open inside the folder):
+node app.js
+With this, Node will start the server and show the below message:
+Now, if we open http://localhost:3000/ in the browser, we will see this:
+STEP 2: Push to GitHub
+Now want to upload our code to GitHub. This way, we will be able to edit our 
+code from anywhere and also deploy the committed changes to the cloud 
+instantly.
+Let’s create a Repository on GitHub by clicking New Repository.
+Give it a name, some description, and click Create repository:
+GitHub will create a repository and give you some commands that you can run 
+locally so that you can clone your local folder with your GitHub repository.
+Now choose “upload an existing file” as shown in figure below :
+Drag and drop your previous created file i.e package.json & app.js
+And click on commit changes .
+STEP 3: Deploy to Heroku
+If you don’t have an account with Heroku, you can open a free one by filling 
+out this simple form.
+Once you have your account ready, login with your credentials.
+Click New on the top right corner and select “Create new app”.
+Give your app a name (This will be included in the public URL for your 
+application) and click Create app.
+This step will take you to the dashboard of your app. Open Deploy tab and 
+scroll to the “Deployment method” section.
+Select GitHub as the method.
+It will show a “Connect to GitHub” option where we can provide our GitHub 
+repository. If you are doing it for the first time, Heroku will ask permission to 
+access your GitHub account.
+Here, you can search for your GitHub repository and click connect:
+Click “ Enable Automatic Deploys “. You can also select the GitHub branch if 
+you need to, but for this demo we will deploy from the master branch.
+Now we need to tell Heroku that our app is a NodeJs app. For that, we will 
+need the NodeJs build back.
+Open the Settings tab and locate Buildpacks and click“Add buildpack”.
+Select nodejs from the options and click Save changes.
+Now, go back to the Deploy tab, and click Deploy Branch at the bottom.
+Heroku will take the code and host it. Open the Activity tab and there you can 
+see the progress:
+Open the settings tab and scroll down to the Domains and certificates section. 
+Here, you can see the URL of your app that was just deployed. Copy and paste 
+that URL in the browser.
+Output: We just created our own web application that can be accessed over
+the internet .
+Conclusion: Learned how to host our own web application in a PaaS environmen
